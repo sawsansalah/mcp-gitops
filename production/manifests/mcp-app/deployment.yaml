@@ -16,7 +16,9 @@ spec:
     spec:
       containers:
       - name: mcp-app
-        image: nginx:missing
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
