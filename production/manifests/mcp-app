@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-app
+  labels:
+    app: mcp-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-app
+  template:
+    metadata:
+      labels:
+        app: mcp-app
+    spec:
+      containers:
+      - name: mcp-app
+        image: nginx:missing
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-app
+spec:
+  selector:
+    app: mcp-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
